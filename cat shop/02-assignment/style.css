@@ -1,0 +1,215 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a:hover {
+    color: red;
+}
+
+/* Переключатель плиток / списка ---------------------------------------------------------------- */
+
+#toogle__input {
+    display: none
+}
+
+#toogle__label {
+    display: inline-block;
+    margin-top: 12px;
+    margin-left: 25px;
+    padding: 5px 11px;
+    background-color: rgba(72, 219, 42, 0.411);
+    border: 1px solid;
+    border-radius: 3px;
+}
+
+/* Скрытие списка */
+#rows {
+    display: none;
+}
+
+#toogle__input:checked ~ #toogle__label {
+    background-color: rgba(245, 60, 60, 0.322);
+    margin-left: 120px;
+}
+
+#toogle__input:checked ~ #columns {
+    display: none;
+}
+
+#toogle__input:checked ~ #rows {
+    display: block;
+}
+
+/* Плитки --------------------------------------------------------------------------------------- */
+
+.columns__item {
+    display: inline-block;
+    width: 400px;
+    margin: 25px;
+    vertical-align: top;
+}
+
+.columns__item .item__picture {
+    position: relative;
+    height: 400px;
+}
+
+.item__picture:hover {
+    opacity: 0.7;
+}
+
+.columns__item img {
+    position: absolute;
+    max-width: 400px;
+    max-height: 400px;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 0%);
+}
+
+h2,
+.item__price {
+    margin: 7px 0 0;
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 18px;
+    max-width: 98%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.item__category {
+    margin: 0px;
+    font-size: 12px;
+    color: gray;
+}
+
+.item__category a {
+    color: gray;
+}
+
+/* Список --------------------------------------------------------------------------------------- */
+
+.rows__item {
+    margin: 25px;
+}
+
+.rows__item .item__picture,
+.rows__item .item__shortinfo,
+.rows__item .item__description {
+    display: inline-block;
+    vertical-align: top;
+    width: 400px;
+}
+
+.rows__item .item__picture img {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Рейтинг -------------------------------------------------------------------------------------- */
+
+.item__rating {
+    margin: 5px 0;
+    padding: 0;
+    border: none;
+}
+
+.item__rating__group {
+    position: relative;
+    width: 7.5em;
+    height: 1.5em;
+    background-image: url(images/off.svg);
+    background-size: 1.5em auto;
+    background-repeat: repeat-x;
+}
+
+/*  focus-within не поддерживается в Edge */
+/* .item__rating__group:focus-within {
+    outline: solid 0.2em #4a90e2;
+    outline-offset: 0.2em;
+} */
+
+.item__rating__star {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.5em;
+    margin: 0;
+    background-size: 1.5em auto;
+    background-repeat: repeat-x;
+    font-size: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.item__rating__star:focus {
+    outline: none;
+}
+
+/* Эмуляция focus-within для Edge */
+/* .item__rating__star:focus ~ .item__rating__focus {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    outline: solid 0.2em #4a90e2;
+    outline-offset: 0.2em;
+} */
+
+.item__rating__star:checked,
+.item__rating__star:hover {
+    background-image: url(images/on.svg);
+}
+
+.item__rating__star:hover ~ .item__rating__star {
+    background-image: url(images/off.svg);
+}
+
+.item__rating__star:nth-of-type(1) {
+    z-index: 5;
+    width: 1.5em;
+}
+
+.item__rating__star:nth-of-type(2) {
+    z-index: 4;
+    width: 3em;
+}
+
+.item__rating__star:nth-of-type(3) {
+    z-index: 3;
+    width: 4.5em;
+}
+
+.item__rating__star:nth-of-type(4) {
+    z-index: 2;
+    width: 6em;
+}
+
+.item__rating__star:nth-of-type(5) {
+    z-index: 1;
+    width: 7.5em;
+}
+
+.item__price {
+    font-weight: bold;
+    color: darkred;
+}
+
+.item__price__old {
+    font-weight: initial;
+    font-size: 14px;
+    text-decoration: line-through;
+    color: initial;
+}
+
+.item__description {
+    margin-top: -5px;
+}
