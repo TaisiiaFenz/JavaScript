@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //Function expression
+        const ex1 = function (n) {
+            for (let i = 1; i <= n; i++) {
+                if ((i%3 === 0)&&(i%5 === 0)) console.log('fizzbuzz');
+                else if (i%5 === 0) console.log('buzz');
+                else if (i%3 === 0) console.log('fizz');
+                else console.log(i);
+            }
+        }
+        ex1(5);
+
+        //Function declaration
+        function cost(cost1, cost2) {
+            while (cost2 >= 100) {
+                cost1++;
+                cost2 = cost2 - 100;
+            }
+            let hryvnia = 'гривень';
+            if ((cost1%10 === 1)&&(cost1 != 11)) hryvnia = 'гривня';
+            else if (((cost1%10 === 2)&&(cost1 != 12))
+                ||((cost1%10 === 3)&&(cost1 != 13))
+                ||((cost1%10 === 4)&&(cost1 != 14)))
+                hryvnia = 'гривні';
+            let cent = 'копійок';
+            if ((cost2%10 === 1)&&(cost2 != 11)) cent = 'копійка';
+            else if (((cost2%10 === 2)&&(cost2 != 12))
+                ||((cost2%10 === 3)&&(cost2 != 13))
+                ||((cost2%10 === 4)&&(cost2 != 14)))
+                cent = 'копійки';
+            console.log('cost(' + cost1 + ',' + cost2 + ')');
+            console.log('Вартість замовлення:',cost1, hryvnia, cost2, cent);
+        }
+        cost(2, 75);
+        cost(0, 1);
+        cost(25, 3);
+        cost(20, 102);
+
+        //arrow function
+        const ex3 = (x1, y1, x2, y2) => {
+            let message;
+            if ((x1*x2 > 0)&&(y1*y2 > 0)) {
+                let dist = (Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1))).toFixed(2);
+                message = 'Відстань між точками: ' + dist;
+            }
+            else {
+                console.log('Місцезнаходження точок');
+                message = '1-ша точка: ' + graph(x1, y1)
+                    + ',  2-га точка: ' + graph(x2, y2) + '.';
+            }
+            console.log(message);
+        }
+        const graph = (x, y) => {
+            let txt;
+            if ((x > 0)&&(y > 0)) txt = 'I чверть';
+            else if ((x < 0)&&(y > 0)) txt = 'II чверть';
+            else if ((x < 0)&&(y < 0)) txt = 'III чверть';
+            else if ((x > 0)&&(y < 0)) txt = 'IV чверть';
+            else if ((x == 0)&&(y == 0)) txt = 'центр координат';
+            else if (x == 0) txt = 'лежить на осі У';
+            else if (y == 0) txt = 'лежить на осі X';
+            return txt;
+        }
+        const b = ex3(0, 2, 6, 7);
+    </script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h1 {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        h2 {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 1000px;
+            height: 660px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+            padding: 30px;
+            padding-top: 15px;
+        }
+        select {
+            margin: 0;
+            width: 500px;
+            height: 40px;
+            font-size: 20px;
+            padding-left: 10px;
+        }
+        option {
+
+        }
+        .text-block {
+            padding: 0 10px;
+        }
+        .text__title {
+            text-align: center;
+        }
+
+        #flags {
+            background: #fff url(img/flag_1.jpg) no-repeat;
+            margin-left: auto;
+            margin-right: auto;
+            width: 200px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .places {
+
+        }
+        .place {
+            display: flex;
+            padding: 5px;
+            margin-bottom: 10px;
+            height: 120px;
+            box-shadow: 0 0 20px 0 rgba(0,0,0,0.1);
+        }
+        .place__block {
+            display: block;
+            width: 100%;
+            position: relative;
+        }
+        .img_ {
+            width: 180px;
+            height: 120px;
+        }
+        #img1 {
+            background: #fff url(img/1_1.jpg) no-repeat;
+        }
+        #img2 {
+            background: #fff url(img/1_2.jpg) no-repeat;
+        }
+        #img3 {
+            background: #fff url(img/1_3.jpg) no-repeat;
+        }
+        .place img {
+
+        }
+        .padd {
+            padding-left: 20px;
+        }
+        .place__block__txt {
+            width: 500px;
+        }
+        .price-block {
+            position: absolute;
+            right: 0;
+            display: flex;
+            padding: 40px 0;
+        }
+        .price-block h2 {
+            display: block;
+            padding-top: 5px;
+        }
+        .price-block input {
+            margin-left: 30px;
+            display: block;
+            width: 30px;
+            height: 30px;
+        }
+        .block__button {
+            display: flex;
+            width: 100%;
+            text-align: center;
+        }
+        button {
+            margin: 5px 30px 0px 10px;
+            display: block;
+            font-size: 18px;
+            padding: 6px 15px;
+        }
+        #result {
+            padding-top: 10px;
+            font-size: 20px;
+            display: block;
+            width: 100px;
+            height: 20px;
+            border: black solid #000;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <form name="count">
+        <select id="select" name="country" onchange="change_info()">
+            <option value="france">Франция</option>
+            <option value="spanish">Испания</option>
+            <option value="italy">Италия</option>
+            <option value="egypt">Египет</option>
+            <option value="hungary">Венгрия</option>
+        </select>
+        <div class="text-block">
+            <h1 class="text__title">Франция</h1>
+            <div id="flags"></div>
+            <div class="places">
+                <div class="place">
+                    <div class="place__block">
+                        <div id="img1" class="img_"></div>
+                    </div>
+                    <div class="place__block padd">
+                        <h2 class="place__block__name">Лувр</h2>
+                        <div class="place__block__txt">Лувр – это одна из самых знаменитых достопримечательностей Парижа. Лувр известен туристам, в первую очередь, не как великолепный архитектурный памятник, служивший некогда домом французским королям, а как известнейший музей мира, куда тянутся ценители искусства со всех уголков земного шара.</div>
+                    </div>
+                    <div class="place__block">
+                        <div class="price-block">
+                            <h2 class="place__price">30$</h2>
+                            <input type="checkbox" name="okey" value="30" onchange="check_block(0)">
+                        </div>
+                    </div>
+                </div>
+                <div class="place">
+                    <div class="place__block">
+                        <div id="img2" class="img_"></div>
+                    </div>
+                    <div class="place__block padd">
+                        <h2 class="place__block__name">Лазурный берег</h2>
+                        <div class="place__block__txt">Лазурный Берег (Cote d’Azur) — знаменитый южный район Франции, протянувшийся вдоль Средиземного моря от Марселя до границы с Италией. Прекрасный климат, живописная природа, теплое море и фешенебельные отели делают его излюбленным местом отдыха обеспеченных людей.</div>
+                    </div>
+                    <div class="place__block">
+                        <div class="price-block">
+                            <h2 class="place__price">200$</h2>
+                            <input type="checkbox" name="okey" value="200" onchange="check_block(1)">
+                        </div>
+                    </div>
+                </div>
+                <div class="place">
+                    <div class="place__block">
+                        <div id="img3" class="img_"></div>
+                    </div>
+                    <div class="place__block padd">
+                        <h2 class="place__block__name">Версаль</h2>
+                        <div class="place__block__txt">Версальский дворец считается одним из важнейших исторических объектов Франции и Европы в целом. Он был в числе первых включен в список всемирного наследия охраняемого ЮНЕСКО в 1979 году. Версальский дворец, построенный по приказу Людовика XIV стал символом величия французской короны.</div>
+                    </div>
+                    <div class="place__block">
+                        <div class="price-block">
+                            <h2 class="place__price">65$</h2>
+                            <input type="checkbox" name="okey" value="65" onchange="check_block(2)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="block__button">
+            <button class="button" onclick="give_result(); return false;">Посчитать</button>
+            <div id="result"></div>
+        </div>
+    </form>
+</div>
+<script>
+    let form = document.forms.count;
+    let checks = form.elements.okey;
+    let blocks = document.querySelector('.text-block');
+    let price = document.querySelectorAll('.place__price');
+    let counter = 0;
+
+    let check_boxes = [];
+    let name = document.querySelectorAll('.place__block__name');
+
+    function give_result() {
+        result.innerHTML = counter + '$';
+    }
+    function check_block(n) {
+            if ((checks[n].checked)&&(check_boxes.indexOf(name[n].textContent) == -1)) {
+                check_boxes.push(name[n].textContent);
+                counter = counter + Number(checks[n].value);
+            } else if (checks[n].checked == false) {
+                for (let i = 0; i < check_boxes.length; i++) {
+                    if (check_boxes[i] == name[n].textContent) {
+                        counter = counter - Number(checks[n].value);
+                        check_boxes.splice(i, 1);
+                    }
+                }
+            }
+            console.log(check_boxes);
+            console.log(counter);
+    }
+
+    function clear_all() {
+        for (let check of checks) {
+            check.checked = false;
+        }
+    }
+
+    function make_true() {
+        let i = 0;
+        for (let n of name) {
+            if (check_boxes.indexOf(n.textContent) != -1) {
+                checks[i].checked = true;
+            }
+            i++;
+        }
+    }
+
+    function change_info() {
+        let text_title = document.querySelector('.text__title');
+        let place = document.querySelectorAll('.place__block__txt');
+        let country = form.country.value;
+
+        if (country == 'france') {
+            clear_all();
+            text_title.innerHTML = "Франция";
+            flags.style.cssText=`background: #fff url(img/flag_1.jpg) no-repeat`;
+            img1.style.cssText=`background: #fff url(img/1_1.jpg) no-repeat`;
+            img2.style.cssText=`background: #fff url(img/1_2.jpg) no-repeat`;
+            img3.style.cssText=`background: #fff url(img/1_3.jpg) no-repeat`;
+            name[0].innerHTML = "Лувр";
+            name[1].innerHTML = "Лазурный берег";
+            name[2].innerHTML = "Версаль";
+            place[0].innerHTML = "Лувр – это одна из самых знаменитых достопримечательностей Парижа. Лувр известен туристам, в первую очередь, не как великолепный архитектурный памятник, служивший некогда домом французским королям, а как известнейший музей мира, куда тянутся ценители искусства со всех уголков земного шара.";
+            place[1].innerHTML = "Лазурный Берег (Cote d’Azur) — знаменитый южный район Франции, протянувшийся вдоль Средиземного моря от Марселя до границы с Италией. Прекрасный климат, живописная природа, теплое море и фешенебельные отели делают его излюбленным местом отдыха обеспеченных людей.";
+            place[2].innerHTML = "Версальский дворец считается одним из важнейших исторических объектов Франции и Европы в целом. Он был в числе первых включен в список всемирного наследия охраняемого ЮНЕСКО в 1979 году. Версальский дворец, построенный по приказу Людовика XIV стал символом величия французской короны. ";
+            price[0].innerHTML = '30$';
+            price[1].innerHTML = '200$';
+            price[2].innerHTML = '65$';
+            checks[0].value = "30";
+            checks[1].value = "200";
+            checks[2].value = "65";
+            make_true();
+        }
+        if (country == 'spanish') {
+            clear_all();
+            text_title.innerHTML = "Испания";
+            flags.style.cssText=`background: #fff url(img/flag_2.png) no-repeat`;
+            img1.style.cssText=`background: #fff url(img/2_1.jpg) no-repeat`;
+            img2.style.cssText=`background: #fff url(img/2_2.jpg) no-repeat`;
+            img3.style.cssText=`background: #fff url(img/2_3.jpg) no-repeat`;
+            name[0].innerHTML = "Музей Сальвадора Дали";
+            name[1].innerHTML = "Парк Гуэль";
+            name[2].innerHTML = "Порт Авентура";
+            place[0].innerHTML = "Театр-музей Сальвадора Дали в Фигерасе — один из самых известных музеев, полностью посвященных жизни и творчеству знаменитого художника Сальвадору Дали. Музей считается последней великой работой Сальвадора Дали: всё в нем было задумано и спроектировано самим художником.";
+            place[1].innerHTML = "Парк Гуэль — одна из главных достопримечательностей Барселоны, располагается на холме Кармель в верхней части города и включает систему садов и архитектурных элементов, жилую зону.";
+            place[2].innerHTML = "Это самый популярный испанский семейный парк отдыха и курорт, в котором ежегодно отдыхают свыше трех миллионов туристов со всего мира, что также делает его шестым по посещаемости развлекательным парком в Европе.";
+            price[0].innerHTML = '20$';
+            price[1].innerHTML = '35$';
+            price[2].innerHTML = '70$';
+            checks[0].value = "20";
+            checks[1].value = "35";
+            checks[2].value = "70";
+            make_true();
+        }
+        if (country == 'italy') {
+            clear_all();
+            text_title.innerHTML = "Италия";
+            flags.style.cssText=`background: #fff url(img/flag_3.png) no-repeat`;
+            img1.style.cssText=`background: #fff url(img/3_1.jpg) no-repeat`;
+            img2.style.cssText=`background: #fff url(img/3_2.jpg) no-repeat`;
+            img3.style.cssText=`background: #fff url(img/3_3.jpg) no-repeat`;
+            name[0].innerHTML = "Собор Святого Марка";
+            name[1].innerHTML = "Колизей";
+            name[2].innerHTML = "Озеро Гарда";
+            place[0].innerHTML = "Собор Святого Марка, он же Базилика Сан-Марко — главный собор Венеции и, возможно, один из самых известных соборов Италии. Он находится на площади Сан-Марко в южной части города.";
+            place[1].innerHTML = "Колизей является одной из самых известных и посещаемых достопримечательностей Апеннинского полуострова. Монументальное сооружение античных времен располагается в историческом центре Рима, в самом сердце Вечного города.";
+            place[2].innerHTML = "На озере Гарда в Италии всегда есть что посмотреть и где отдохнуть. Это невероятно красивое и интересное место, где можно провести отпуск на любой вкус и кошелек. ";
+            price[0].innerHTML = '15$';
+            price[1].innerHTML = '30$';
+            price[2].innerHTML = '120$';
+            checks[0].value = "15";
+            checks[1].value = "30";
+            checks[2].value = "120";
+            make_true();
+        }
+        if (country == 'egypt') {
+            clear_all();
+            text_title.innerHTML = "Египет";
+            flags.style.cssText=`background: #fff url(img/flag_4.png) no-repeat`;
+            img1.style.cssText=`background: #fff url(img/4_1.jpg) no-repeat`;
+            img2.style.cssText=`background: #fff url(img/4_2.jpg) no-repeat`;
+            img3.style.cssText=`background: #fff url(img/4_3.jpg) no-repeat`;
+            name[0].innerHTML = "Пирамиды Гизы";
+            name[1].innerHTML = "Библиотека Александрина";
+            name[2].innerHTML = "Долина Царей";
+            place[0].innerHTML = "Великие пирамиды в Гизе — один из самых крупных комплексов пирамид в мире, расположенный в Египте. Он состоит из трех больших пирамид и пирамид поменьше, где покоятся приближенные фараонов.";
+            place[1].innerHTML = "Библиотека Александрина, или Новая Александрийская библиотека — библиотека и культурный центр, расположенный на берегу Средиземного моря в Александрии, Египет.";
+            place[2].innerHTML = "Долина Царей — это долина на западному берегу Нила, где в период с XVI до XI  вв. до н. э. возводили гробницы для захоронения фараонов Древнего Египта. На территории археологических раскопок, начавшихся в конце XVIII века, выделяют две долины: где сосредоточены самые главные гробницы.";
+            price[0].innerHTML = '45$';
+            price[1].innerHTML = '10$';
+            price[2].innerHTML = '60$';
+            checks[0].value = "45";
+            checks[1].value = "10";
+            checks[2].value = "60";
+            make_true();
+        }
+        if (country == 'hungary') {
+            clear_all();
+            text_title.innerHTML = "Венгрия";
+            flags.style.cssText=`background: #fff url(img/flag_5.jpg) no-repeat`;
+            img1.style.cssText=`background: #fff url(img/5_1.jpg) no-repeat`;
+            img2.style.cssText=`background: #fff url(img/5_2.jpg) no-repeat`;
+            img3.style.cssText=`background: #fff url(img/5_3.jpg) no-repeat`;
+            name[0].innerHTML = "Здание венгерского парламента";
+            name[1].innerHTML = "Пещерная купальня Мишкольц-Тапольца";
+            name[2].innerHTML = "Крепость Эгер";
+            place[0].innerHTML = "Здание парламента в Будапеште является самым большим сооружением в Венгрии — в нем почти 700 помещений, 29 лестниц и 10 двориков. Эта резиденция, построенная в 1896 году, является одной из главных достопримечательностей страны.";
+            place[1].innerHTML = "Озерная пещера вымывалась в твердых известняковых породах в течение нескольких тысячелетий. После долгих подготовительных и строительных работ в 1959 году состоялось открытие купальни.";
+            place[2].innerHTML = "Строительство эгерской цитадели началось ещё в эпоху легендарной княжеской династии Арпадов, но первая версия комплекса оказалась разрушена в ходе вторжения монголов. Новая крепость была больше старой и защищена надёжнее, чем она.";
+            price[0].innerHTML = '15$';
+            price[1].innerHTML = '30$';
+            price[2].innerHTML = '20$';
+            checks[0].value = "15";
+            checks[1].value = "30";
+            checks[2].value = "20";
+            make_true();
+        }
+    }
+</script>
+</body>
+</html>
