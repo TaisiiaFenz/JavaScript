@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<style>
+    body {
+        user-select: none;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-gap: 4px;
+        padding: 4px;
+        border-radius: 5px;
+        background-color: black;
+        border: 2px solid black;
+        color: #fff;
+        max-width: 360px;
+        font-family: "Tahoma";
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .item {
+        background-color: #212121;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    form {
+        max-width: 100%;
+    }
+    input {
+        max-width: 100%;
+        height: 60px;
+        border: none;
+        outline: none;
+        font-size: 30px;
+        color: black;
+        text-align: center;
+    }
+    .input {
+        grid-column: 1/-1;
+        padding: 0;
+    }
+    .cleanfull {
+        grid-column: 1/3;
+        background-color: #85DD49;
+        color: black;
+    }
+    .clean {
+        grid-column: 3/-1;
+    }
+    .same {
+        grid-column: 2/-1;
+        background-color: #ABE683;
+        color: black;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="item input">
+        <form name="form">
+            <input type="text" name="textview" readonly>
+        </form>
+    </div>
+    <div class="item cleanfull" onclick="cleanAll()">C</div>
+    <div class="item clean" onclick="clearOne()">&larr;</div>
+    <div class="item" onclick="addTxt('+')">+</div>
+    <div class="item" onclick="addTxt('-')">-</div>
+    <div class="item" onclick="addTxt('*')">*</div>
+    <div class="item" onclick="addTxt('/')">/</div>
+    <div class="item" onclick="addTxt('7')">7</div>
+    <div class="item" onclick="addTxt('8')">8</div>
+    <div class="item" onclick="addTxt('9')">9</div>
+    <div class="item" onclick="addTxt('%')">%</div>
+    <div class="item" onclick="addTxt('4')">4</div>
+    <div class="item" onclick="addTxt('5')">5</div>
+    <div class="item" onclick="addTxt('6')">6</div>
+    <div class="item" onclick="addTxt('&radic;')">&radic;</div>
+    <div class="item" onclick="addTxt('1')">1</div>
+    <div class="item" onclick="addTxt('2')">2</div>
+    <div class="item" onclick="addTxt('3')">3</div>
+    <div class="item" onclick="addTxt('^')">^</div>
+    <div class="item" onclick="addTxt('0')">0</div>
+    <div class="item same" onclick="equal()">=</div>
+</div>
+<script>
+    function addTxt(num) {
+        document.form.textview.value = document.form.textview.value + num;
+    }
+    function cleanAll() {
+        document.form.textview.value = '';
+    }
+    function clearOne() {
+        let exp = document.form.textview.value;
+        document.form.textview.value = exp.substring(0,
+            exp.length - 1);
+    }
+    function equal() {
+        //console.log("labudi");
+        let exp = document.form.textview.value;
+        let j;
+        let substr ="";
+        let lookfor = ["&", "^", "%", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", "*", "/"];
+
+        let elems = exp.split('');
+
+        for(let i = 0; i < elems.length; i++) {
+            if (lookfor.find(item => item == elems[i]) == undefined) {
+                //console.log(elems[i]);
+                j = i + 1;
+               // console.log(isFinite(elems[j]));
+                while (isFinite(elems[j])) {
+                    substr = substr + String(elems[j]);
+                    elems[j] = "&";
+                    j++;
+                }
+                console.log(substr);
+                elems[i] = Math.sqrt(Number(substr)).toFixed(2);
+                substr ="";
+            }
+        }
+        let substr0 = "";
+        let k = -1;
+        elems = elems.filter(item => item != "&");
+        for(let i = 0; i < elems.length; i++) {
+            if (elems[i] == "^") {
+                console.log(elems[i]);
+
+                for (j = k; j < i; j++) {
+                    elems[j] = "&";
+                }
+
+                j = i + 1;
+                // console.log(isFinite(elems[j]));
+                while (isFinite(elems[j])) {
+                    substr = substr + String(elems[j]);
+                    elems[j] = "&";
+                    j++;
+                }
+                console.log(substr0);
+                console.log(substr);
+                elems[i] = Math.pow(Number(substr0), Number(substr));
+                substr ="";
+            }
+            if (isFinite(elems[i])) {
+                substr0 = substr0 + String(elems[i]);
+                if (k == -1) k = i;
+            } else {
+                k = -1;
+                substr0 = "";
+            }
+        }
+        let res = elems.filter(item => item != "&");
+        console.log(res);
+        let str = res.join('');
+        console.log(str);
+        if (exp) {
+            document.form.textview.value = eval(str);
+        }
+    }
+</script>
+</body>
+</html>

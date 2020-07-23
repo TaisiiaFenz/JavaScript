@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SlideShow</title>
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        html {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #E5E5E5;
+            padding-top: 40px;
+        }
+        h1 {
+            padding-left: 162px;
+            font-weight: bold;
+            font-size: 38px;
+            line-height: 46px;
+            color: #000000;
+            margin: 0;
+            margin-bottom: 80px;
+        }
+
+        .flex-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .slider-wrapper {
+            max-width: 800px;
+            width: 100%;
+            height: 490px;
+            position: relative;
+            box-shadow: 10px 10px 44px -10px rgba(0,0,0,0.75);
+        }
+
+        #btn-prev, #btn-next {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 50px;
+            background-color: gray;
+            opacity: 0.4;
+            cursor: pointer;
+            transition: opacity .2s ease-in-out;
+        }
+
+        #btn-prev:hover, #btn-next:hover {
+            opacity: 0.6;
+        }
+
+
+        #btn-next {
+            left: auto;
+            right: 0;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .dots-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .dot.active {
+            background-color: #000000;
+        }
+
+        span {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: gray;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        span:last-child{
+            margin-right: 0;
+        }
+        .forma {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+        .row {
+            margin-bottom: 30px;
+            justify-content: center;
+            display: flex;
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+        }
+        .row-1 {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .right-block {
+            margin-bottom: 30px;
+            display: flex;
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+        }
+        .message {
+            display: block;
+            position: absolute;
+            right: 0;
+        }
+        .buttons-size {
+            display: block;
+            position: absolute;
+            left: 0;
+        }
+        .buttons-size button {
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+        }
+        #select {
+            display: block;
+            font-size: 16px;
+            height: 30px;
+            padding-right: 20px;
+        }
+        #timing {
+            font-size: 16px;
+            height: 23px;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="row-1">
+    <div class="right-block">
+        <div class="message">
+        *Інтервал задається в секундах
+        </div>
+    </div>
+</div>
+<div class="forma">
+    <div class="row">
+        <div class="buttons-size">
+            <button value="+" onclick="changeSize('+')" class="sizes">+</button>
+            <button value="-" onclick="changeSize('-')" class="sizes">-</button>
+        </div>
+        <form name="form">
+            <select id="select" name="cycle" onchange="change_info()">
+                <option value="yes">Циклічний перегляд</option>
+                <option value="no">Не циклічний</option>
+            </select>
+            <input id="timing" onchange="change_timer()" type="number" value="2.5" min="0.5" step="0.5">
+        </form>
+    </div>
+</div>
+<div class="flex-wrapper">
+    <div class="slider-wrapper">
+        <div class="slide active">
+            <img src="img_1.jpg" alt="">
+        </div>
+        <div class="slide">
+            <img src="img_2.jpg" alt="">
+        </div>
+        <div class="slide">
+            <img src="img_3.jpg" alt="">
+        </div>
+        <div id="btn-prev"></div>
+        <div id="btn-next"></div>
+    </div>
+</div>
+<div class="dots-wrapper">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+</div>
+<script>
+    const prev = document.getElementById('btn-prev'),
+        next = document.getElementById('btn-next'),
+        slides = document.querySelectorAll('.slide'),
+        dot = document.querySelectorAll('.dot'),
+        slideWrapper = document.querySelectorAll('.slider-wrapper');
+
+    let timer = document.getElementById('timing');
+    let timing = 2500;
+
+    let index = 0;
+
+    const activeSlide = n => {
+        for (slide of slides) {
+            slide.classList.remove('active');
+        }
+        slides[n].classList.add('active');
+    }
+
+    const activeDot = n => {
+        for (d of dot) {
+            d.classList.remove('active');
+        }
+        dot[n].classList.add('active');
+    }
+
+    const prepareCurrentSlide = ind => {
+        activeSlide(ind);
+        activeDot(ind);
+    }
+
+    const nextSlide = () => {
+        if (index == slides.length - 1) {
+            index = 0;
+        } else {
+            index++;
+        }
+        prepareCurrentSlide(index);
+        //clearInterval(interval);
+    }
+
+    const nextSlide_interval = () => {
+        if (index == slides.length - 1) {
+            index = 0;
+        } else {
+            index++;
+        }
+        prepareCurrentSlide(index);
+    }
+
+    const prewSlide = () => {
+        if (index == 0) {
+            index = slides.length - 1;
+        } else {
+            index--;
+        }
+        prepareCurrentSlide(index);
+        //clearInterval(interval);
+    }
+
+    dot.forEach((item, indexDot) => {
+        item.addEventListener('click', () => {
+            index = indexDot;
+            prepareCurrentSlide(index);
+            //clearInterval(interval);
+        })
+    })
+
+    next.addEventListener('click', nextSlide);
+    prev.addEventListener('click', prewSlide);
+
+    let interval = setInterval(nextSlide_interval, timing);
+
+    let sizes = [];
+    let pluses = 0, minuses = 0;
+    let pos = document.querySelectorAll('.sizes');
+
+    function changeSize(val) {
+            if (val == '+') pluses++;
+            else minuses++;
+            if ((pluses - minuses) == 2) {
+                slideWrapper[0].style.maxWidth = '1100px';
+                slideWrapper[0].style.height = '600px';
+            } else
+            if ((pluses - minuses) == 1) {
+                slideWrapper[0].style.maxWidth = '950px';
+                slideWrapper[0].style.height = '550px';
+            } else
+            if ((pluses - minuses) == 0) {
+                slideWrapper[0].style.maxWidth = '800px';
+                slideWrapper[0].style.height = '490px';
+            } else
+            if ((pluses - minuses) == -1) {
+                slideWrapper[0].style.maxWidth = '650px';
+                slideWrapper[0].style.height = '400px';
+            } else
+            if ((pluses - minuses) == -2) {
+                slideWrapper[0].style.maxWidth = '500px';
+                slideWrapper[0].style.height = '300px';
+            } else
+            if ((pluses - minuses) < -2) {
+                pluses = 0;
+                minuses = 2;
+            } else
+            if ((pluses - minuses) > 2) {
+                pluses = 2;
+                minuses = 0;
+            }
+    }
+    function change_info() {
+        let form = document.forms.form;
+        let changing = form.cycle.value;
+        if (changing == 'no')  {
+            clearInterval(interval);
+        } else {
+            interval = setInterval(nextSlide_interval, timing);
+        }
+    }
+    function change_timer() {
+        timing = timer.value * 1000;
+        clearInterval(interval);
+        interval = setInterval(nextSlide_interval, timing);
+    }
+</script>
+</body>
+</html>
