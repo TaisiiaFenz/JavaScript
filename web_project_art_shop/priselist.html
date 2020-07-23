@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Price</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <script src="feedback.js"></script>
+</head>
+<body>
+<header class="header">
+    <div class="content">
+        <div class="header-logo">
+            <a href="index.html">
+                <img src="img/arts.svg" class="logo" width="100px" height="100px" alt="logo">
+            </a>
+            <div class="logo-txt">
+                <div class="logo-txt__title">
+                    Art
+                </div>
+                <div class="logo-txt__text">
+                    xудожественный салон
+                </div>
+            </div>
+        </div>
+        <div class="header-feedback">
+            <div class="phones">
+                +7(499) 777-77-77
+            </div>
+            <div class="phones">
+                +7(499) 777-77-77
+            </div>
+            <div class="feedback__txt">
+                <a onclick="show('block')">
+                    Обратная связь
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="menu">
+    <div class="content">
+        <ul>
+            <li class="menu__border"><a href="#">Главная</a></li>
+            <li class="menu__border"><a href="index.html">Каталог</a></li>
+            <li class="menu__border"><a href="#">Доставка и оплата</a></li>
+            <li><a href="priselist.html" class="menu__active"><span>Прайс-лист</span></a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+    </div>
+</div>
+<div class="slider-block">
+    <div class="slides">
+        <div class="img_2">
+            <div class="slide active fade-effect">
+                <img src = "img/pic_2.png" alt="slide_2">
+            </div>
+        </div>
+        <div class="img_3">
+            <div class="slide fade-effect">
+                <img src = "img/pic_3.png" alt="slide_3">
+            </div>
+        </div>
+        <div class="img_4">
+            <div class="slide fade-effect">
+                <img src = "img/pic_4.png" alt="slide_4">
+            </div>
+        </div>
+        <div class="img_5">
+            <div class="slide fade-effect">
+                <img src = "img/pic_5.png" alt="slide_5">
+            </div>
+        </div>
+        <div id="btn-prev"></div>
+        <div id="btn-next"></div>
+    </div>
+</div>
+<div class="bread-block">
+    <div class="content">
+        <div class="goods-line">
+            <ul id="breadcrumbs">
+                <li><a href="">Главная/</a></li>
+                <li><a href="priselist.html" id="current_bread">Прайс-лист</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="flexi">
+    <div id="pricelist"></div>
+</div>
+<div class="statistic">
+    <div class="stat">
+        <div class="stat__img">
+            <img src="img/1.png" alt="picture" class="stat-img">
+        </div>
+        <div class="stat__title">
+            Более 1600 товарных позиций
+        </div>
+    </div>
+    <div class="stat">
+        <div class="stat__img">
+            <img src="img/2.png" alt="picture" class="stat-img">
+        </div>
+        <div class="stat__title">
+            Качественные товары
+        </div>
+    </div>
+    <div class="stat">
+        <div class="stat__img">
+            <img src="img/3.png" alt="picture" class="stat-img">
+        </div>
+        <div class="stat__title">
+            Профессиональные консультации
+        </div>
+    </div>
+    <div class="stat">
+        <div class="stat__img">
+            <img src="img/4.png" alt="picture" class="stat-img">
+        </div>
+        <div class="stat__title">
+            Разумная цена
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="content relative footer-block">
+        <div class="footer-left">
+            © 2019–2020 info@name.ru
+        </div>
+        <div class="footer-list">
+            <ul>
+                <li><a>Главная</a></li>
+                <li><a href="priselist.html">Каталог</a></li>
+                <li><a>Доставка и оплата</a></li>
+                <li><a href="priselist.html">Прайс-лист</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+        <div class="footer-right">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="img/art_2.svg" class="logo" width="100px" height="100px" alt="logo">
+                </a>
+                <div class="logo-txt">
+                    <div class="logo-txt__title">
+                        Art
+                    </div>
+                    <div class="logo-txt__text footer-logo__text">
+                        xудожественный салон
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<img src="img/background.png" id = "backimage">
+<div id="forma">
+    <div class="form-back">
+        <form id="back" name="formo">
+            <button id="close" onclick="show('none')"></button>
+            <div class="form_title">Обратная связь</div>
+            <div class="form_txt">Ваше имя*</div>
+            <input name="name" placeholder="Введите ваше имя" required>
+            <div class="form_txt">Телефон*</div>
+            <input type="tel" name="tel" placeholder="Введите ваш телефон" required pattern="[0-9]">
+            <div class="form_txt">Email*</div>
+            <input type="email" name="email" required placeholder="Введите ваш email">
+            <div class="form_txt">Сообщение</div>
+            <textarea name="text" cols="20"></textarea>
+            <div><input type="submit" value="Отправить" onclick = "sent()"></div>
+        </form>
+    </div>
+</div>
+<script src="main.js"></script>
+<script src="price_list.js"></script>
+</body>
+</html>

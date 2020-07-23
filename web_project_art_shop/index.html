@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Art</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <script src="feedback.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="content">
+            <div class="header-logo">
+                <a href="index.html">
+                    <img src="img/arts.svg" class="logo" width="100px" height="100px" alt="logo">
+                </a>
+                <div class="logo-txt">
+                    <div class="logo-txt__title">
+                        Art
+                    </div>
+                    <div class="logo-txt__text">
+                        xудожественный салон
+                    </div>
+                </div>
+            </div>
+            <div class="header-feedback">
+                <div class="phones">
+                    +7(499) 777-77-77
+                </div>
+                <div class="phones">
+                    +7(499) 777-77-77
+                </div>
+                <div class="feedback__txt">
+                    <a onclick="show('block')">
+                        Обратная связь
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="menu">
+        <div class="content">
+            <ul>
+                <li class="menu__border"><a href="#">Главная</a></li>
+                <li class="menu__border"><a href="index.html">Каталог</a></li>
+                <li class="menu__border"><a href="#">Доставка и оплата</a></li>
+                <li class="menu__border"><a href="priselist.html">Прайс-лист</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="slider-block">
+        <div class="slides">
+            <div class="img_2">
+                <div class="slide active fade-effect">
+                    <img src = "img/pic_2.png" alt="slide_2">
+                </div>
+            </div>
+            <div class="img_3">
+                <div class="slide fade-effect">
+                    <img src = "img/pic_3.png" alt="slide_3">
+                </div>
+            </div>
+            <div class="img_4">
+                <div class="slide fade-effect">
+                    <img src = "img/pic_4.png" alt="slide_4">
+                </div>
+            </div>
+            <div class="img_5">
+                <div class="slide fade-effect">
+                    <img src = "img/pic_5.png" alt="slide_5">
+                </div>
+            </div>
+            <div id="btn-prev"></div>
+            <div id="btn-next"></div>
+        </div>
+    </div>
+    <div class="goods-block">
+        <div class="content">
+            <div class="goods-line">
+                <ul id="breadcrumbs">
+                    <li><a href="">Главная/</a></li>
+                    <li><a href="index.html">Каталог/</a></li>
+                    <li><a href="" id="current_bread">Краски</a></li>
+                </ul>
+            </div>
+            <div class="goods">
+                <div class="leftblock">
+                    <div class="lists">
+                    <div class="list">
+                        <div class="list__title active-l">
+                            Краски
+                        </div>
+                        <ul class="list__el active-list">
+                            <li class="active-list__el">Краски акварельные</li>
+                            <li>Краски масляные</li>
+                            <li>Краски гуашевые</li>
+                            <li>Краски акриловые</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <div class="list__title">
+                            Кисти
+                        </div>
+                        <ul class="list__el">
+                            <li>Кисти для масла</li>
+                            <li>Кисти для гуаши</li>
+                            <li>Мастихины</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <div class="list__title">
+                            Мольберты
+                        </div>
+                        <ul class="list__el">
+                            <li>Мольберты</li>
+                            <li>Планшеты</li>
+                            <li>Этюдники</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <div class="list__title">
+                            Лайнеры
+                        </div>
+                        <ul class="list__el">
+                            <li>Лайнеры</li>
+                            <li>Маркеры</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <div class="list__title">
+                            Графика
+                        </div>
+                        <ul class="list__el">
+                            <li>Тушь</li>
+                            <li>Перья</li>
+                            <li>Пастель</li>
+                            <li>Сангина</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <div class="list__title">
+                            Бумага и холсты
+                        </div>
+                        <ul class="list__el">
+                            <li>Бумага</li>
+                            <li>Холсты</li>
+                        </ul>
+                    </div>
+                    </div>
+                    <div class="price_exel">
+                        <a href="table.xlsx" download>
+                        <p class="price_img"><img src="img/excel.png" alt="excel"></p>
+                        <div class="price_txt">Прайс-лист</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="centerblock">
+                    <div class="catalog">
+                        <div class="row">
+                            <div class="card relative">
+                                <div class="card__img">
+                                    <img src="img/img_1.jpg" alt="good" class="card__img__">
+                                    <div class="card__hover">
+                                        <a href="#" class="card__button">
+                                            O товаре
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card__title">
+                                    Акварель Невская Палитра СОНЕТ
+                                    24 цвета 2,5 мл, НАБОР
+                                </div>
+                                <div class="card__block">
+                                    <div class="card__block__price">
+                                        357 грн
+                                    </div>
+                                    <div class="card__block__basket">
+                                        <img src="img/basket.png" alt="корзина" class="basket">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card relative">
+                                <div class="card__img">
+                                    <img src="img/img_2.jpg" alt="good" class="card__img__">
+                                    <div class="card__hover">
+                                        <a href="#" class="card__button">
+                                            O товаре
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card__title">
+                                    Акварель Невская Палитра СОНЕТ
+                                    16 цветов 2,5 мл, НАБОР
+                                </div>
+                                <div class="card__block">
+                                    <div class="card__block__price">
+                                        255 грн
+                                    </div>
+                                    <div class="card__block__basket">
+                                        <img src="img/basket.png" alt="корзина" class="basket">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card relative">
+                                <div class="card__img">
+                                    <img src="img/img_3.jpg" alt="good" class="card__img__">
+                                    <div class="card__hover">
+                                        <a href="#" class="card__button">
+                                            O товаре
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card__title">
+                                    Набор Ecoline Brushpen с жидкой
+                                    акварелью Royal Talens, 10шт
+                                </div>
+                                <div class="card__block">
+                                    <div class="card__block__price">
+                                        668 грн
+                                    </div>
+                                    <div class="card__block__basket">
+                                        <img src="img/basket.png" alt="корзина" class="basket">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card relative">
+                                <div class="card__img">
+                                    <img src="img/img_4.jpg" alt="good" class="card__img__">
+                                    <div class="card__hover">
+                                        <a href="#" class="card__button">
+                                            O товаре
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card__title">
+                                    Акварель Белые Ночи 36 цветов
+                                    2,5мл, НАБОР в пластиковом пенале
+                                </div>
+                                <div class="card__block">
+                                    <div class="card__block__price">
+                                        1598 грн
+                                    </div>
+                                    <div class="card__block__basket">
+                                        <img src="img/basket.png" alt="корзина" class="basket">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card relative">
+                                <div class="card__img">
+                                    <img src="img/img_5.jpg" alt="good" class="card__img__">
+                                    <div class="card__hover">
+                                        <a href="#" class="card__button">
+                                            O товаре
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card__title">
+                                    Акварель Невская палитра Белые
+                                    Ночи 24 цвета 2,5мл, НАБОР
+                                </div>
+                                <div class="card__block">
+                                    <div class="card__block__price">
+                                        848 грн
+                                    </div>
+                                    <div class="card__block__basket">
+                                        <img src="img/basket.png" alt="корзина" class="basket">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="numbers">
+                        <ul>
+                            <li class="active-number">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                        </ul>
+                  </div>
+                    <div class="information">
+                        <div class="info-line"></div>
+                        <div class="info-txt">
+                            <div class="info-txt__ info-txt__1">
+                                ART - это не обычный магазин для творчества,
+                                а место, где полет ваших мыслей обретет смысл
+                                и получит всё, чтобы начать созидать.
+                                Без рамок и ограничений. Чтобы вы никогда не
+                                останавливались и продолжали творить.
+                                Чтобы купить товары для творчества было не проблемой,
+                                а делом нескольких кликов. Чтобы ваше увлечение
+                                было чем-то большим. И мы будем очень рады
+                                поучаствовать в создании того, чем вы занимаетесь.
+                            </div>
+                            <div class="info-txt__ info-txt__2">
+                                Вам нужно купить все для творчества,
+                                а мы хотим вам в этом помочь. Это значит,
+                                что все заявки обрабатываются в течение
+                                нескольких часов, а отправка осуществляется
+                                в тот же день. И не важно из какого вы уголка
+                                Украины (или даже мира) — мы сделаем всё,
+                                чтобы купленные товары были у вас максимально скоро.
+                                Ведь муза не ждёт.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="content relative footer-block">
+            <div class="footer-left">
+                © 2019–2020 info@name.ru
+            </div>
+            <div class="footer-list">
+                <ul>
+                    <li><a>Главная</a></li>
+                    <li><a href="priselist.html">Каталог</a></li>
+                    <li><a>Доставка и оплата</a></li>
+                    <li><a href="priselist.html">Прайс-лист</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer-right">
+                <div class="footer-logo">
+                    <a href="index.html">
+                        <img src="img/art_2.svg" class="logo" width="100px" height="100px" alt="logo">
+                    </a>
+                    <div class="logo-txt">
+                        <div class="logo-txt__title">
+                            Art
+                        </div>
+                        <div class="logo-txt__text footer-logo__text">
+                            xудожественный салон
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <img src="img/background.png" id = "backimage">
+    <div id="forma">
+        <div class="form-back">
+            <form id="back" name="formo">
+                <button id="close" onclick="show('none')"></button>
+                <div class="form_title">Обратная связь</div>
+                <div class="form_txt">Ваше имя*</div>
+                <input name="name" placeholder="Введите ваше имя" required>
+                <div class="form_txt">Телефон*(5-10 цифр)</div>
+                <input type="tel" name="tel" placeholder="Введите ваш телефон" required pattern="[0-9]{5,10}">
+                <div class="form_txt">Email*</div>
+                <input type="email" name="email" required placeholder="Введите ваш email">
+                <div class="form_txt">Сообщение</div>
+                <textarea name="text" cols="20"></textarea>
+                <div><input type="submit" value="Отправить" onclick = "sent()"></div>
+            </form>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
