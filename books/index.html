@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .order {
+            position: absolute;
+            width: 70%;
+            margin-left: 14%;
+        }
+        .block {
+            border: 1px solid black;
+            margin: 1px;
+            padding: 1px;
+        }
+        .small-inp {
+            width: 100px;
+        }
+        .block-center {
+            text-align: center;
+        }
+        .checkbox_order {
+            margin-left: 5px;
+        }
+        .block-right {
+            text-align: right;
+        }
+
+        .flexi {
+            display: flex;
+        }
+        #letter {
+            display: block;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            margin-top: 475px;
+        }
+        #info {
+            display: block;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            margin-top: 300px;
+        }
+        table {
+            border-collapse: collapse;
+            margin: auto;
+        }
+        td {
+            border: 1px solid black;
+            padding: 5px;
+            width: 150px;
+            text-align: center;
+        }
+        .blue {
+            background-color: #E4F9FF;
+            font-weight: bold;
+        }
+        .red {
+            border: red solid 1px;
+        }
+    </style>
+</head>
+<body>
+    <form name = "form1" class = "order">
+        <div class = "block">
+            <div class = "block block-center">
+                Замовлення на придбання товару
+            </div>
+            <div class = "block">
+                Назва товару
+                <br>
+                <form action="select" method="get">
+                    <select size="1" id = "list" onchange = "change_price_making_list()">
+                        <option value="220" selected>Магия утра - 220</option>
+                        <option value="300">Храбрость - 300</option>
+                        <option value="150">Вино из одуванчиков - 150</option>
+                        <option value="340">Унесенные ветром - 340</option>
+                        <option value="270">Алиса в стране чудес - 270</option>
+                    </select>
+                </form>
+            </div>
+            <div class = "block">
+                Кількість:
+                <input type = "text" id = "amount" value = "0" oninput = "change_price()" class="small-inp">
+                Вартість замовленних книг:
+                <input type = "text" id = "price" value = "0" readonly="readonly" class="small-inp">
+            </div>
+            <div class = "block">
+                Спосіб доставки замовлення<br>
+                <input type="radio" name="way" value="post" checked>Поштою<br>
+                <input type="radio" name="way" value="home">Доставка до дому<br>
+                <input type="checkbox" name = "box" class="checkbox_order">У святковій упаковці
+            </div>
+            <div class = "block block-right">
+                Загальна вартість замовлення
+                <input type = "text" id = "cost" readonly="readonly" class="small-inp">
+                <input type = "button" value = "Підрахувати" onclick = "calculate()">
+            </div>
+            <div class = "block">
+                Дані замовника<br>
+                Ім'я: <input type = "text" id = "name">
+                Адреса: <input type = "text" id = "adress">
+            </div>
+            <div class = "block block-right">
+                <input type = "button" value = "Відновити початкові значення полів" onclick = "resett()">
+                <input type = "button" value = "Відіслати дані" onclick = "sent()">
+            </div>
+        </div>
+    </form>
+    <div class="flexi">
+        <div id = "letter"></div>
+        <div id = "info"></div>
+    </div>
+    <script>
+        let books = [];
+        let sum = 0;
+        let currentBook;
+        let last_list = true;
+        let infor, newTable;
+
+        function calculate() {
+            sum = 0;
+            making_list();
+            for (let book of books) {
+                let delivery, box = 0;
+                if (book.posting == "post") {
+                    delivery = book.value*book.amount * 0.05;
+                } else {
+                    delivery = book.value*book.amount * 0.15;
+                }
+                if (book.box) {
+                    box = delivery * 0.1;
+                }
+                sum = sum + book.value*book.amount + delivery + box;
+            }
+            form1.cost.value = sum.toFixed(2);
+        }
+
+        function resett() {
+            form1.cost.value = "";
+            clearAll();
+            form1.name.value = "";
+            form1.adress.value = "";
+            form1.box.checked = false;
+            form1.list.selectedIndex = 0;
+            form1.way.value = "post";
+            sum = 0;
+            let len_del = books.length;
+            books.splice(0, len_del);
+            last_list = true;
+        }
+
+        function sent() {
+            if (infor) {
+                infor.remove();
+                newTable.remove();
+            }
+            if (form1.cost.value == '') {
+                alert('click the "count" button, please');
+                return 0;
+            } else if (form1.cost.classList.contains("red"))
+                form1.cost.classList.remove("red");
+            if (form1.name.value == '') {
+                alert('enter name, please');
+                form1.name.classList.add("red");
+                return 0;
+            } else if (form1.name.classList.contains("red"))
+                form1.name.classList.remove("red");
+            if (form1.adress.value == '') {
+                alert('enter adress, please');
+                form1.adress.classList.add("red");
+                return 0;
+            } else if (form1.adress.classList.contains("red"))
+                form1.adress.classList.remove("red");
+
+            let k;
+            infor = document.createElement("table");
+            for (let i = 0; i < 4; i++) {
+                let rowInf = infor.insertRow(i);
+                k = i - 1;
+                for (let j = 0; j < 2; j++) {
+                    let cellInf = rowInf.insertCell(j);
+                    if (i === 0 && j === 0) {
+                        cellInf.innerHTML = "Ім'я";
+                        cellInf.className = "blue";
+                    } else if (i=== 0 && j === 1) {
+                        cellInf.innerHTML = form1.name.value;
+                    }else if (i=== 1 && j === 0) {
+                        cellInf.innerHTML = "Адреса";
+                        cellInf.className = "blue";
+                    } else if (i=== 1 && j === 1) {
+                        cellInf.innerHTML = form1.adress.value;
+                    } else if (i=== 2 && j === 0) {
+                        cellInf.innerHTML = 'Вартість замовлення без доставки';
+                        cellInf.className = "blue";
+                    } else if (i=== 2 && j === 1) {
+                        let summary = 0;
+                        for (let book of books) {
+                            summary = summary + book.value * book.amount;
+                        }
+                        cellInf.innerHTML = summary;
+                    } else if (i=== 3 && j === 0) {
+                        cellInf.innerHTML = 'Вартість замовлення';
+                        cellInf.className = "blue";
+                    } else if (i=== 3 && j === 1) {
+                        cellInf.innerHTML = sum;
+                    }
+                }
+            }
+            newTable = document.createElement("table");
+            for (let i = 0; i <= books.length; i++) {
+                let newRow = newTable.insertRow(i);
+                k = i - 1;
+                for (let j = 0; j < 8; j++) {
+                    let newCell = newRow.insertCell(j);
+                    if (i === 0 && j === 0) {
+                        newCell.innerHTML = 'Номер книги';
+                        newCell.className = "blue";
+                    } else
+                    if (j === 1) {
+                        if (i === 0) {
+                            newCell.innerHTML = 'Название книги';
+                            newCell.className = "blue";
+                        } else {
+                            if (books[k].value == '220')
+                                newCell.innerHTML = 'Магия утра';
+                            else if (books[k].value == '300')
+                                newCell.innerHTML = 'Храбрость';
+                            else if (books[k].value == '150')
+                                newCell.innerHTML = 'Вино из одуванчиков';
+                            else if (books[k].value == '340')
+                                newCell.innerHTML = 'Унесенные ветром';
+                            else if (books[k].value == '270')
+                                newCell.innerHTML = 'Алиса в стране чудес';
+                        }
+                    } else
+                    if (j === 2) {
+                        if (i === 0) {
+                            newCell.className = "blue";
+                            newCell.innerHTML = 'Цена книги';
+                        } else {
+                            newCell.innerHTML = books[k].value;
+                        }
+                    } else
+                    if (j === 3) {
+                        if (i === 0) {
+                            newCell.className = "blue";
+                            newCell.innerHTML = 'Количество заказанных книг';
+                        }  else {
+                            newCell.innerHTML = books[k].amount;
+                        }
+                    } else
+                    if (j === 4) {
+                        if (i === 0) {
+                            newCell.className = "blue";
+                            newCell.innerHTML = 'Цена заказа';
+                        }  else {
+                            newCell.innerHTML = books[k].amount*books[k].value;
+                        }
+                    } else
+                    if (j === 5) {
+                        if (i === 0) {
+                            newCell.className = "blue";
+                            newCell.innerHTML = 'Вариант доставки';
+                        }  else {
+                            if (books[k].posting == 'post')
+                                newCell.innerHTML = 'Поштою';
+                            else newCell.innerHTML = 'Доставка до дому';
+                        }
+                    } else
+                    if (j === 6) {
+                        if (i === 0) {
+                            newCell.className = "blue";
+                            newCell.innerHTML = 'У святковій упаковці';
+                        }  else {
+                            if (books[k].box == true)
+                                newCell.innerHTML = 'Так';
+                            else newCell.innerHTML = 'Ні';
+                        }
+                    } else
+                    if (j === 7) {
+                        if (i === 0) {
+                            newCell.className = "blue";
+                            newCell.innerHTML = 'Цена заказа с доставкой';
+                        } else {
+                            let delivery, boxing = 0;
+                                if (books[k].posting == 'post')
+                                   delivery = 0.05*(books[k].amount*books[k].value);
+                                else delivery = 0.15*(books[k].amount*books[k].value);
+                                if (books[k].box == true) {
+                                    boxing = delivery*0.1;
+                                }
+                                newCell.innerHTML = books[k].amount*books[k].value + delivery + boxing;
+                        }
+                    } else
+                    if (i > 0 && j === 0) {
+                        newCell.innerHTML = i;
+                    }
+                }
+            }
+            document.getElementById("letter").appendChild(newTable);
+            document.getElementById("info").appendChild(infor);
+        }
+        function Obj(value, amount, posting, box) {
+            this.value = value;
+            this.amount = amount;
+            this.posting = posting;
+            this.box = box;
+        }
+        function clearAll() {
+            form1.amount.value = 0;
+            form1.price.value = 0;
+            form1.box.checked = false;
+            form1.way.value = "post";
+        }
+        function making_list() {
+            let founder = false;
+            for (let i = 0; i < books.length; i++) {
+                if (currentBook == books[i].value) {
+                    founder = true;
+                    if ((form1.amount.value == 0)||(form1.amount.value == ' ')) {
+                        books.splice(i, 1);
+                    }
+                    else {
+                        books[i].amount = form1.amount.value;
+                        books[i].posting = form1.way.value;
+                        books[i].box = form1.box.checked;
+                    }
+                }
+            }
+            if ((founder == false)&&(form1.amount.value != 0)) {
+                let myBook = new Obj(currentBook, form1.amount.value, form1.way.value, form1.box.checked);
+                books.push(myBook);
+            }
+        }
+        function change_price_making_list() {
+            making_list();
+            clearAll();
+            currentBook = form1.list.options[form1.list.selectedIndex].value;
+            for (let book of books) {
+                if (book.value == currentBook){
+                    form1.way.value = book.posting;
+                    form1.box.checked = book.box;
+                    form1.amount.value = book.amount;
+                    form1.price.value = book.amount * Number(book.value);
+                }
+            }
+        }
+        function change_price() {
+            currentBook = form1.list.options[form1.list.selectedIndex].value;
+            form1.price.value = currentBook * form1.amount.value;
+        }
+    </script>
+</body>
+</html>
