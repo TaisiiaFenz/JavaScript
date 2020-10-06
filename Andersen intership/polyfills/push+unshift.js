@@ -30,12 +30,8 @@ Array.prototype.unshift1 = function() {
 }
 
 Array.prototype.unshift2 = function(){
-    console.log(arguments);
     Array.prototype.splice.call(arguments, 0, 0, 0, 0);
-    console.log(arguments);
-    console.log(this);
     Array.prototype.splice.apply(this, arguments);
-    console.log(this);
     return this.length;
 };
 
