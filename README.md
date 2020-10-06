@@ -1,2 +1,3 @@
 # JavaScript
- first steps
+ • Simple codes
+ • Anderson internship
