@@ -19,3 +19,13 @@ console.log(arr2);
 //
 // arr3 = arr3.slice(-3, 3);
 // console.log(arr3);
+
+let users = [
+    {id: 1, name: "Вася"},
+    {id: 2, name: "Петя"},
+    {id: 3, name: "Маша"}
+];
+
+let user = users.find0((item) => item.id == 1);
+
+console.log(user.name);
