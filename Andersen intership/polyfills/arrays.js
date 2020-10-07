@@ -15,11 +15,6 @@ console.log(arr2);
 arr2.slice0(2, -1);
 console.log(arr2);
 
-// let arr3 = [2, 4, 10, 11, 3];
-//
-// arr3 = arr3.slice(-3, 3);
-// console.log(arr3);
-
 let users = [
     {id: 1, name: "Вася"},
     {id: 2, name: "Петя"},
@@ -27,5 +22,7 @@ let users = [
 ];
 
 let user = users.find0((item) => item.id == 1);
-
 console.log(user.name);
+
+let someUsers = users.filter0(item => item.id < 3);
+console.log(someUsers);
