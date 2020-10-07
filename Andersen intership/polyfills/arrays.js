@@ -30,3 +30,7 @@ console.log(someUsers);
 myArray = [1, 2, 3, 4, 5, 6];
 myArray.reverse0();
 console.log(myArray);
+
+let values = [2, 5, 5];
+let res = values.reduce0((a, b) => a * b, 2);
+console.log(res);
