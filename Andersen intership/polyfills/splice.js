@@ -8,3 +8,4 @@ Array.prototype.splice0 = function(startIndex, deleteCount, ...args) {
     }
     return this;
 }
+

@@ -11,3 +11,11 @@ console.log(arr2);
 
 arr2.splice0(2, 3, 10, 11);
 console.log(arr2);
+
+arr2.slice0(2, -1);
+console.log(arr2);
+
+// let arr3 = [2, 4, 10, 11, 3];
+//
+// arr3 = arr3.slice(-3, 3);
+// console.log(arr3);
