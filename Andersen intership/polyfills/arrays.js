@@ -26,3 +26,7 @@ console.log(user.name);
 
 let someUsers = users.filter0(item => item.id < 3);
 console.log(someUsers);
+
+myArray = [1, 2, 3, 4, 5, 6];
+myArray.reverse0();
+console.log(myArray);
