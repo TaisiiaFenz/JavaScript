@@ -10,11 +10,3 @@ Object.prototype.assign0 = function (target, ...args) {
     }
     return res;
 }
-
-var o1 = { a: 1 };
-var o2 = { b: 2 };
-var o3 = { c: 3 };
-
-var obj = Object.assign0(o1, o2, o3);
-console.log(obj);
-console.log(o1);
