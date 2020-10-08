@@ -1,8 +1,3 @@
-//const reduce = Function.bind.call(Function.call, Array.prototype.reduce);
-const isEnumerable = Function.bind.call(Function.call, Object.prototype.propertyIsEnumerable);
-const concat = Function.bind.call(Function.call, Array.prototype.concat);
-//const keys = Reflect.ownKeys;
-
 Object.prototype.entries0 = function(obj) {
     const res = [];
     const keys = Reflect.ownKeys(obj);
@@ -11,6 +6,14 @@ Object.prototype.entries0 = function(obj) {
         currArr.push(key, obj[key]);
         res.push(currArr);
     }
-    //return Object.reduce(keys(obj), (e, k) => concat(e, typeof k === 'string' && isEnumerable(obj, k) ? [[k, obj[k]]] : []), []);
     return res;
 }
+
+Object.prototype.entries1 = function(obj) {
+    const reduce = Function.bind.call(Function.call, Array.prototype.reduce);
+    const isEnumerable = Function.bind.call(Function.call, Object.prototype.propertyIsEnumerable);
+    const concat = Function.bind.call(Function.call, Array.prototype.concat);
+    const keys = Reflect.ownKeys;
+    return Object.reduce(keys(obj), (e, k) => concat(e, typeof k === 'string' && isEnumerable(obj, k) ? [[k, obj[k]]] : []), []);
+}
+
