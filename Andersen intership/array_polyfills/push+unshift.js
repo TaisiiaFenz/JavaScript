@@ -6,12 +6,12 @@ Array.prototype.push0 = function() {
 }
 
 Array.prototype.unshift0 = function() {
-    let arr = [];
+    const array = [];
     for (let argument of arguments) {
-        arr[arr.length] = argument;
+        array[array.length] = argument;
     }
-    this.forEach((elem) => arr[arr.length] = elem);
-    arr.forEach((elem, index) => this[index] = elem);
+    this.forEach((element) => array[array.length] = element);
+    array.forEach((element, index) => this[index] = element);
 
     return this.length;
 }
