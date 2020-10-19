@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .block {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .block div {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="example">
+    <div class="block">
+        <div v-for="item in items">
+            {{item}}
+        </div>
+    </div>
+    <div class="block">
+        <div v-for="item in newItems">
+            {{item}}
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+let example = new Vue({
+    el: "#example",
+    data: function() {
+        return {
+            items: Array.apply(null, {length: 100}).map(Number.call, Number)
+        }
+    },
+    methods: {
+        makeItems() {
+            return Array.apply(null, {length: 10}).map(Number.call, Number);
+        }
+    },
+    computed: {
+        createItems() {
+          return Array.apply(null, {length: 10}).map(Number.call, Number);
+        },
+        newItems() {
+            return this.items.filter((item, index) => item%2 == 0);
+        }
+    }
+});
+
+</script>
+</body>
+</html>
