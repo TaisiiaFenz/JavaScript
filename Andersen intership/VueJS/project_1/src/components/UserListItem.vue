@@ -1,6 +1,6 @@
 <template>
     <li class="user_item">
-        {{user.id}}
+        <slot>{{user.id}}</slot>
         {{user.name}}
         <button v-on:click="$emit('remove')">Удалить</button>
     </li>

@@ -6,6 +6,7 @@
                           v-bind:key="item.id"
                           v-bind:user="item"
                           v-on:remove="users.splice(index, 1)">
+                {{item.id}} -
             </UserListItem>
         </ul>
     </div>
