@@ -22,15 +22,18 @@
                 users: [
                     {
                         id: 1,
-                        name: 'Alica'
+                        name: 'Alica',
+                        imgSrc: "https://cdn.iz.ru/sites/default/files/styles/900x506/public/news-2019-04/gtjg.jpg?itok=XMcF9xCq"
                     },
                     {
                         id: 2,
-                        name: 'Bob'
+                        name: 'Bob',
+                        imgSrc: "https://static.probusiness.io/n/03/d/38097027_439276526579800_2735888197547458560_n.jpg"
                     },
                     {
                         id: 3,
-                        name: 'Taisiia'
+                        name: 'Taisiia',
+                        imgSrc: "https://simple-fauna.ru/wp-content/uploads/2017/10/obyknovennaya-belka.jpg"
                     }
                 ]
             }
@@ -41,7 +44,7 @@
 <style scoped>
 .user_list {
     width: 60%;
-    height: 50vh;
+    height: 75vh;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
